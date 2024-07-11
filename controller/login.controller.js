@@ -3,7 +3,7 @@ const UserLogin =  async (req,res)=>{
 
     try{
         const {email,password} = await req.body;
-        console.log(email);
+
 
         const Userssignupdata = await UserSignupModel.findOne({email});
 

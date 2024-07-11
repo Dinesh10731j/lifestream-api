@@ -7,7 +7,11 @@ const UserSignup =  async (req,res)=>{
         const Userssignupdata = await UserSignupModel.create({name,email,password,confirmpassword});
         const token = await Userssignupdata.generateToken();
         Userssignupdata.token= token;
-        console.log(Userssignupdata);
+ const AlreadyExists = await UserSignupModel.findOne({email});
+
+ if(AlreadyExists){
+    return res.status(403).send({msg:"User Already Exists",success:false});
+ }
        
 
         res.status(201).json({success:true,message:"Login Successful",data:Userssignupdata,roles:Userssignupdata.role});
