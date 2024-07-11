@@ -23,7 +23,8 @@ const SignupSchema = new mongoose.Schema({
     confirmpassword:String,
     role:{
         type:String,
-        enum:['admin','donor','receiptant']
+        enum:['admin','donor','receiptant'],
+        default: 'donor',
     },
 
 
@@ -31,8 +32,11 @@ const SignupSchema = new mongoose.Schema({
 });
 
 
-SignupSchema.methods.generateToken=()=>{
-    const token = jwt.sign({id:this._id},process.env.Signature)
+SignupSchema.methods.generateToken= async()=>{
+    const token = jwt.sign({id:this._id},process.env.Signature);
+    this.token = token;
+  
+    return token;
 }
 
 const UserSignupModel = mongoose.model("Usersignup",SignupSchema);

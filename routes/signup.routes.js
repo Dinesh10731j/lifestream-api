@@ -3,12 +3,12 @@ const {UserSignup} = require("../controller/controller.signup");
 
 
 
-const Routes = express.Router();
+const SignupRoutes = express.Router();
 
 
-Routes.post("/signup",UserSignup);
+SignupRoutes.post("/signup",UserSignup);
 
 
 
 
-module.exports = Routes
+module.exports = SignupRoutes;
