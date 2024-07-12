@@ -27,6 +27,11 @@ const SignupSchema = new mongoose.Schema({
         default: 'donor',
     },
 
+    donordata:{
+        type:mongoose.Schema.ObjectId,
+        ref:"Scheduledonation"
+    },
+
 
     token:String
 });

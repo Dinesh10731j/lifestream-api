@@ -53,10 +53,27 @@ const ScheduledonationSchema = new mongoose.Schema({
     type: Boolean,
    
   },
+
+  status:{
+    type:String,
+    enum:['Pending','Completed'],
+    default:'Pending'
+  },
   previousDonationDate: {
     type: Date,
     required: true
-  }
+  },
+
+  todayDate:{
+    type:Date,
+    default:Date.now(),
+
+  },
+
+  
+
+
+
 },{timestamps:true});
 
 const ScheduleModel = mongoose.model('Scheduledonation', ScheduledonationSchema);

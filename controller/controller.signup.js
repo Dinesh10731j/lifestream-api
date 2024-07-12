@@ -1,10 +1,11 @@
 const UserSignupModel = require("../model/signup.model");
+const ScheduledonationModel = require("../model/scheduledonation.model");
 
 const UserSignup = async (req, res) => {
     try {
         const { name, email, password, confirmpassword } = req.body;
 
-        // Check if a user with the same email already exists
+   
         const alreadyExists = await UserSignupModel.findOne({ email });
 
         console.log("alreadyExists:", alreadyExists); 
@@ -17,11 +18,14 @@ const UserSignup = async (req, res) => {
             const token = await newUser.generateToken();
             newUser.token = token; // Assign the generated token to the user object
 
-            // Return success response with created user data
+            const donordata = await ScheduledonationModel.find({ userId: newUser._id }).populate('donordata');
+
+            // Return success response with created user data and populated donordata
             return res.status(201).json({
                 success: true,
                 message: "User Registration Successful",
                 data: newUser,
+                donordata: donordata,
                 roles: newUser.role
             });
         } else {
