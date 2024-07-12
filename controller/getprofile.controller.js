@@ -9,7 +9,7 @@ const GetProfile = async (req, res) => {
             return res.status(404).send({ message: "User not found" });
         }
 
-        console.log(userprofile);
+        
         res.status(200).send({ data: userprofile });
     } catch (error) {
         console.error(error);

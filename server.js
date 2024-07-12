@@ -8,7 +8,8 @@ dotenv.config();
 
 const SignupRoutes = require("./routes/signup.routes");
 const LoginRoutes = require("./routes/login.routes");
-const GetProfileRoutes = require("./routes/getprofile.routes")
+const GetProfileRoutes = require("./routes/getprofile.routes");
+const DonationScheduleRoutes = require("./routes/scheduledonation.routes")
 const Connectdb = require("./utils/dbconn")
 const server= express();
 const port = process.env.PORT || 7000;
@@ -19,6 +20,7 @@ server.use(cors());
 server.use("/api",SignupRoutes);
 server.use("/api",LoginRoutes);
 server.use("/api",GetProfileRoutes);
+server.use("/api",DonationScheduleRoutes);
 
 Connectdb().then(()=>{
     server.listen(port,()=>{
