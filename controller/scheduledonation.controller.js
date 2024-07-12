@@ -1,3 +1,6 @@
+
+
+const ScheduleModel = require("../model/scheduledonation.model");
 const ScheduleDonation = async (req, res) => {
 
     try{
@@ -18,6 +21,31 @@ const ScheduleDonation = async (req, res) => {
           } = await req.body;
 
 
+          console.log(notes);
+
+
+          const donorSchedule = await ScheduleModel.create({fullName,
+            email,
+            phoneNumber,
+            donationType,
+            data,
+            time,
+            locationType,
+            address,
+            recentIllness,
+            medication,
+            chronicDiseases,
+            previousDonationDate,
+            notes});
+
+
+
+          res.status(201).send({msg:"Schedule created Successfully",data:donorSchedule,success:true});
+
+
+          console.log(donorSchedule);
+
+
 
 
     }catch(error){
@@ -28,4 +56,4 @@ const ScheduleDonation = async (req, res) => {
 };
 
 
-module.exports =ScheduleDonation;
+module.exports = ScheduleDonation;

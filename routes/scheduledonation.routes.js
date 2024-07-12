@@ -6,7 +6,7 @@ const ScheduleDonation = require("../controller/scheduledonation.controller");
 const DonationScheduleRoutes = express.Router();
 
 
-DonationScheduleRoutes.get("/schedulenewdonations",ScheduleDonation);
+DonationScheduleRoutes.post("/schedulenewdonations",ScheduleDonation);
 
 
 

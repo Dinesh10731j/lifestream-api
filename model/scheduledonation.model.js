@@ -59,6 +59,6 @@ const ScheduledonationSchema = new mongoose.Schema({
   }
 },{timestamps:true});
 
-const Donation = mongoose.model('Scheduledonation', ScheduledonationSchema);
+const ScheduleModel = mongoose.model('Scheduledonation', ScheduledonationSchema);
 
-module.exports = Donation;
+module.exports = ScheduleModel;
