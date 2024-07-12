@@ -1,15 +1,13 @@
-
-
 const ScheduleModel = require("../model/scheduledonation.model");
-const ScheduleDonation = async (req, res) => {
 
-    try{
+const ScheduleDonation = async (req, res) => {
+    try {
         const {
             fullName,
             email,
             phoneNumber,
             donationType,
-            data,
+            date, // Corrected from 'data'
             time,
             locationType,
             address,
@@ -17,18 +15,18 @@ const ScheduleDonation = async (req, res) => {
             medication,
             chronicDiseases,
             previousDonationDate,
-            notes
-          } = await req.body;
+            notes,
+            recentTravel
+        } = req.body;
 
+        console.log("Received data:", req.body); // Check what data is received
 
-          console.log(notes);
-
-
-          const donorSchedule = await ScheduleModel.create({fullName,
+        const donorSchedule = await ScheduleModel.create({
+            fullName,
             email,
             phoneNumber,
             donationType,
-            data,
+            date,
             time,
             locationType,
             address,
@@ -36,24 +34,21 @@ const ScheduleDonation = async (req, res) => {
             medication,
             chronicDiseases,
             previousDonationDate,
-            notes});
+            notes,
+            recentTravel
+        });
 
+        console.log("Created schedule:", donorSchedule); // Check the created schedule
 
-
-          res.status(201).send({msg:"Schedule created Successfully",data:donorSchedule,success:true});
-
-
-          console.log(donorSchedule);
-
-
-
-
-    }catch(error){
-
-        res.status(500).send({msg:"Internal server error",success:false});
+        res.status(201).send({
+            msg: "Schedule created Successfully",
+            data: donorSchedule,
+            success: true
+        });
+    } catch (error) {
+        console.error("Error:", error); // Log the error for debugging
+        res.status(500).send({ msg: "Internal server error", success: false });
     }
-  
 };
-
 
 module.exports = ScheduleDonation;

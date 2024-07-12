@@ -47,11 +47,11 @@ const ScheduledonationSchema = new mongoose.Schema({
   },
   recentIllness: {
     type: Boolean,
-    required: true
+   
   },
   recentTravel: {
     type: Boolean,
-    required: true
+   
   },
   previousDonationDate: {
     type: Date,
