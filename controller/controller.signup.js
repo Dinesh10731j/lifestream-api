@@ -26,6 +26,7 @@ const UserSignup = async (req, res) => {
             const newUser = await UserSignupModel.create({ 
                 name, 
                 email, 
+                confirmpassword:hashedPassword,
                 password: hashedPassword 
             });
 
