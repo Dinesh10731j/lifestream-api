@@ -10,7 +10,7 @@ const UpdatePersonalInfo = async (req, res) => {
 
     const updatedInfo = await ScheduleModel.findOneAndUpdate(
       { useremail }, // Find the user by current email
-      { email: newEmail, phoneNumber, fullName }, // Update to new email and other fields
+      { email: email, phoneNumber, fullName }, // Update to new email and other fields
       { new: true, runValidators: true } // Options: return updated document, run validators
     );
 
