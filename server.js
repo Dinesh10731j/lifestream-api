@@ -10,7 +10,8 @@ const SignupRoutes = require("./routes/signup.routes");
 const LoginRoutes = require("./routes/login.routes");
 const GetProfileRoutes = require("./routes/getprofile.routes");
 const DonationScheduleRoutes = require("./routes/scheduledonation.routes");
-const  DonordonationhistoryRoutes = require("./routes/donationhistory.routes")
+const  DonordonationhistoryRoutes = require("./routes/donationhistory.routes");
+const  PersonalInfoRoutes = require("./routes/updatepersonalinfo.routes")
 const Connectdb = require("./utils/dbconn");
 const DonationHistory = require("./controller/donordonationhistory.controller");
 const server= express();
@@ -24,6 +25,7 @@ server.use("/api",LoginRoutes);
 server.use("/api",GetProfileRoutes);
 server.use("/api",DonationScheduleRoutes);
 server.use("/api",DonordonationhistoryRoutes);
+server.use("/api",PersonalInfoRoutes);
 
 Connectdb().then(()=>{
     server.listen(port,()=>{

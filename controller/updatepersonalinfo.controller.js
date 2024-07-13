@@ -1,13 +1,15 @@
 const ScheduleModel = require("../model/scheduledonation.model");
 
 const UpdatePersonalInfo = async (req, res) => {
-  const {userid} = req.params;
-
-  const {email,phoneNumber,fullName}= req.body;
-  console.log(email,phoneNumber);
-
-  console.log(userid);
   try {
+
+    const {userid} = req.params;
+
+    const {email,phoneNumber,fullName}= req.body;
+    console.log(email,phoneNumber);
+  
+    console.log('This is user id ',userid);
+
     const updatedInfo = await ScheduleModel.findByIdAndUpdate(userid,{email,phoneNumber,fullName});
     console.log(updatedInfo)
 
@@ -22,4 +24,4 @@ const UpdatePersonalInfo = async (req, res) => {
   }
 };
 
-module.exports = UpdatePersonalInfo;
+module.exports = {UpdatePersonalInfo};

@@ -1,5 +1,5 @@
 const express = require("express");
-const UpdatePersonalInfo = require("../controller/updatepersonalinfo.controller");
+const {UpdatePersonalInfo}= require("../controller/updatepersonalinfo.controller");
 
 const PersonalInfoRoutes = express.Router();
 
