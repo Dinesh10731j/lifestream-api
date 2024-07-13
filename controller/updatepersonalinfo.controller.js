@@ -6,7 +6,7 @@ const UpdatePersonalInfo = async (req, res) => {
     const { email, phoneNumber, fullName } = req.body; // The new email and other fields to update
 
     console.log('Current Email:', email);
-    console.log('New Email:', newEmail, 'New Phone Number:', phoneNumber, 'New Full Name:', fullName);
+    console.log('New Email:', email, 'New Phone Number:', phoneNumber, 'New Full Name:', fullName);
 
     const updatedInfo = await ScheduleModel.findOneAndUpdate(
       { useremail }, // Find the user by current email
