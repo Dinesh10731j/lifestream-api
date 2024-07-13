@@ -2,9 +2,14 @@ const ScheduleModel = require("../model/scheduledonation.model");
 
 const UpdatePersonalInfo = async (req, res) => {
   const {userid} = req.params;
+
   const {email,phoneNumber,fullName}= req.body;
+  console.log(email,phoneNumber);
+
+  console.log(userid);
   try {
     const updatedInfo = await ScheduleModel.findByIdAndUpdate(userid,{email,phoneNumber,fullName});
+    console.log(updatedInfo)
 
     if (!updatedInfo) {
       return res.status(404).send({ msg: "User not found", success: false });

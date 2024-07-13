@@ -1,10 +1,10 @@
 const express = require("express");
-const UpdatePersonslInfo = require("../controller/updatepersonalinfo.controller");
+const UpdatePersonalInfo = require("../controller/updatepersonalinfo.controller");
 
 const PersonalInfoRoutes = express.Router();
 
 
-PersonalInfoRoutes.patch("/updatepersonalinformation/:userid",UpdatePersonslInfo);
+PersonalInfoRoutes.patch("/updatepersonalinformation/:userid",UpdatePersonalInfo);
 
 
 
