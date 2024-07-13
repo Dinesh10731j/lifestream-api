@@ -1,26 +1,41 @@
 const UserSignupModel = require("../model/signup.model");
 const ScheduledonationModel = require("../model/scheduledonation.model");
+const bcrypt = require("bcrypt");
 
 const UserSignup = async (req, res) => {
     try {
         const { name, email, password, confirmpassword } = req.body;
 
-   
+        // Check if passwords match
+        if (password !== confirmpassword) {
+            return res.status(400).json({
+                success: false,
+                message: "Passwords do not match"
+            });
+        }
+
         const alreadyExists = await UserSignupModel.findOne({ email });
 
-        console.log("alreadyExists:", alreadyExists); 
+        console.log("alreadyExists:", alreadyExists);
 
         if (!alreadyExists) {
-            // Create a new user using the UserSignupModel
-            const newUser = await UserSignupModel.create({ name, email, password, confirmpassword });
+            // Hash the password before saving
+            const hashedPassword = await bcrypt.hash(password, 10);
 
-            // Generate a token for the new user
+            // Create a new user using the UserSignupModel with hashed password
+            const newUser = await UserSignupModel.create({ 
+                name, 
+                email, 
+                password: hashedPassword 
+            });
+
+
             const token = await newUser.generateToken();
-            newUser.token = token; // Assign the generated token to the user object
+            newUser.token = token; 
 
-            const donordata = await ScheduledonationModel.find({ userId: newUser._id }).populate('donordata');
+            const donordata = await ScheduledonationModel.find({ userId: newUser._id });
 
-            // Return success response with created user data and populated donordata
+           
             return res.status(201).json({
                 success: true,
                 message: "User Registration Successful",

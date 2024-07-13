@@ -1,42 +1,29 @@
-const UserSignupModel = require("../model/signup.model");
-const UserLogin =  async (req,res)=>{
+const bcrypt = require('bcrypt');
+const UserLogin = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
-    try{
-        const {email,password} = await req.body;
-
-
-        const Userssignupdata = await UserSignupModel.find({email,password});
-
-        const token = await Userssignupdata.generateToken();
-        Userssignupdata.token= token;
-
-        if(!Userssignupdata){
-            return res.status(400).send({msg:'Invalid credintials' ,success:false});
+        // Finding the user by email
+        const user = await UserSignupModel.findOne({ email });
+        if (!user) {
+            return res.status(400).send({ msg: 'Invalid credentials', success: false });
         }
 
-
-if(Userssignupdata){
-    return res.status(200).send({msg:"Login Successsful",success:true,data:Userssignupdata})
-}
-
     
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).send({ msg: 'Invalid credentials', success: false });
+        }
 
-    }catch(error){
+        // Generate token
+        const token = await user.generateToken();
+        user.token = token;
 
-        res.status(500).send({msg:"Internal server error"});
+        // Sending the response
+        return res.status(200).send({ msg: "Login Successful", success: true, data: user });
+    } catch (error) {
+        return res.status(500).send({ msg: "Internal server error" });
     }
-  
+};
 
-
-}
-
-
-
-
-
-module.exports = {UserLogin};
-
-
-
-
-
+module.exports = { UserLogin };
