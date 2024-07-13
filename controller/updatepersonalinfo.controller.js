@@ -6,7 +6,7 @@ const UpdatePersonalInfo = async (req, res) => {
     const {userid} = req.params;
 
     const {email,phoneNumber,fullName}= req.body;
-    console.log(email,phoneNumber);
+    console.log(email,phoneNumber,fullName);
   
     console.log('This is user id ',userid);
 
