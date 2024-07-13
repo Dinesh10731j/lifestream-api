@@ -1,6 +1,6 @@
 const UserSignupModel = require("../model/signup.model");
 const ScheduledonationModel = require("../model/scheduledonation.model");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const UserSignup = async (req, res) => {
     try {
