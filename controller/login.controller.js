@@ -5,7 +5,7 @@ const UserLogin =  async (req,res)=>{
         const {email,password} = await req.body;
 
 
-        const Userssignupdata = await UserSignupModel.findOne({email});
+        const Userssignupdata = await UserSignupModel.find({email,password});
 
         const token = await Userssignupdata.generateToken();
         Userssignupdata.token= token;
