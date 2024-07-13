@@ -2,19 +2,19 @@ const ScheduleModel = require("../model/scheduledonation.model");
 
 const UpdatePersonalInfo = async (req, res) => {
   try {
-    const { userid } = req.params;
+    const { email } = req.params; // The current email to find the user
+    const { newEmail, phoneNumber, fullName } = req.body; // The new email and other fields to update
 
-    const { email, phoneNumber, fullName } = req.body;
-    console.log(email, phoneNumber, fullName);
+    console.log('Current Email:', email);
+    console.log('New Email:', newEmail, 'New Phone Number:', phoneNumber, 'New Full Name:', fullName);
 
-    console.log("This is user id ", userid);
-
-    const updatedInfo = await ScheduleModel.findByIdAndUpdate(
-      userid,
-      { email, phoneNumber, fullName },
-      { new: true, runValidators: true }
+    const updatedInfo = await ScheduleModel.findOneAndUpdate(
+      { email }, // Find the user by current email
+      { email: newEmail, phoneNumber, fullName }, // Update to new email and other fields
+      { new: true, runValidators: true } // Options: return updated document, run validators
     );
-    console.log(updatedInfo);
+
+    console.log('Updated Info:', updatedInfo);
 
     if (!updatedInfo) {
       return res.status(404).send({ msg: "User not found", success: false });
@@ -23,9 +23,7 @@ const UpdatePersonalInfo = async (req, res) => {
     return res.status(200).send({ data: updatedInfo, success: true });
   } catch (err) {
     console.error(err); // Log the error for debugging
-    return res
-      .status(500)
-      .send({ msg: "Internal server error", success: false });
+    return res.status(500).send({ msg: "Internal server error", success: false });
   }
 };
 
