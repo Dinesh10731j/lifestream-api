@@ -17,7 +17,7 @@ const GetTotalDonationdetails = async (req, res) => {
         console.log("Total completed donations:", totaldonation);
 
         // Send response with total donation count and all donation data
-        res.status(200).send({ totaldonation, totaldonordonation, success: true });
+        res.status(200).send({ total:totaldonation, data:totaldonordonation, success: true });
 
     } catch (err) {
         console.error("Error:", err);
