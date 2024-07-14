@@ -9,7 +9,7 @@ const GetTotalDonationdetails = async (req, res) => {
 
         // Iterate through each donation and check status
         totaldonordonation.forEach(donation => {
-            if (donation.status === 'completed') {
+            if (donation.status === 'Completed') {
                 totaldonation++;
             }
         });
