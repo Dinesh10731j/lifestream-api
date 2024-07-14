@@ -10,8 +10,6 @@ const GetTotalDonationdetails = async (req, res) => {
         totaldonordonation.forEach(donation => {
             if (donation.status === 'Completed') {
                 totaldonation++;
-            }else{
-                totaldonation = 0;
             }
         });
 
