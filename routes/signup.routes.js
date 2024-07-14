@@ -7,7 +7,7 @@ const Auth = require("../middleware/VerifyToken");
 const SignupRoutes = express.Router();
 
 
-SignupRoutes.post("/signup",UserSignup);
+SignupRoutes.post("/signup",Auth,UserSignup);
 
 
 
