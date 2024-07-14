@@ -14,16 +14,15 @@ const GetTotalDonationdetails = async (req, res) => {
             }
         });
 
+        // Add the total donation count to each donation object
+        totaldonordonation.forEach(donation => {
+            donation._doc.total = totaldonation; // _doc is used to directly modify the document's data
+        });
+
         console.log("Total completed donations:", totaldonation);
 
-        // Structure the response to include total donation count in an array
-        const responseArray = [
-            { totaldonation: totaldonation },
-            ...totaldonordonation
-        ];
-
         // Send response with total donation count and all donation data
-        res.status(200).send({ data: responseArray, success: true });
+        res.status(200).send({ data: totaldonordonation, success: true });
 
     } catch (err) {
         console.error("Error:", err);
