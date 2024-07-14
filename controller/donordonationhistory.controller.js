@@ -2,7 +2,7 @@ const ScheduleModel = require('../model/scheduledonation.model');
 
 const DonationHistory = async (req, res) => {
   try {
-    const {email } = req.params;
+    const {email} = req.params;
  
 
     const donationhistory = await ScheduleModel.find({email });
