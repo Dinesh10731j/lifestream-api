@@ -10,7 +10,13 @@ const RequestSchema = new mongoose.Schema({
         type:String,
         required:[true,'urgency is required']
     },
+email:{
+    type:string,
 
+    required:[true,'email is required']
+
+
+},
 
     quantity:{
         type:String,

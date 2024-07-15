@@ -16,4 +16,4 @@ res.status(500).send({msg:"Internal server error"});
 }
 
 
-module.exports = RequestBlood
+module.exports = RequestBlood;
