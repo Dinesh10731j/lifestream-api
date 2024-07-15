@@ -35,6 +35,7 @@ email:{
      required:[true,'Blood group is required']
     },
 
+
     
 });
 
