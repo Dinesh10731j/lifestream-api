@@ -8,10 +8,10 @@ const RequestSchema = new mongoose.Schema({
 
     urgency:{
         type:String,
-        required:[true,'urgency is required']
+        required:[true,'urgency is required'],
     },
 email:{
-    type:string,
+    type:String,
 
     required:[true,'email is required']
 
@@ -37,9 +37,8 @@ email:{
 
     userInfo:{
         type:mongoose.Schema.Types.ObjectId,
-
         ref:'Usersignup',
-
+        required: true
     }
 });
 
