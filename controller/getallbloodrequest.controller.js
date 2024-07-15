@@ -1,17 +1,16 @@
 const RequestModel = require("../model/requestblood.model");
 const GetAllBloodRequest = async (req,res)=>{
-    const {userid} = req.params;
+    const {email} = req.params;
+    console.log(email);
 
     try{
-        const requestedbloodhistory = await RequestModel.find({userid});
+        const requestedbloodhistory = await RequestModel.find({email});
 
         if(requestedbloodhistory){
 return res.status(200).send({msg:'Blood request history succeesful',data:requestedblood,success:true})
         }
 
         res.status(404).send({msg:'Blood request history not found', success:false})
-
-        
 
     }catch{
 
