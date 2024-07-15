@@ -5,17 +5,18 @@ const RequestBlood = async (req,res)=>{
         const {fullName,urgency,quantity,message,email,bloodGroup} = req.body;
 const RequestUsersdetails = await RequestModel.create({fullName,urgency,quantity,message,email,bloodGroup});
 
+
 if(RequestUsersdetails){
 
     return res.status(201).send({msg:'Blood request send successfully!',data:RequestUsersdetails})
 }
 
 
-res.status(404).send({msg:'Failed to bllod request'})
+res.status(404).send({msg:'Failed to blood request'})
 
 
-    }catch{
-res.status(500).send({msg:"Internal server error",success:false});
+    }catch(err){
+res.status(500).send({msg:"Internal server error",success:false},err);
     }
 }
 
