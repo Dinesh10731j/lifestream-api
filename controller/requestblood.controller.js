@@ -15,8 +15,8 @@ if(RequestUsersdetails){
 res.status(404).send({msg:'Failed to blood request'})
 
 
-    }catch(err){
-res.status(500).json({msg:"Internal server error",success:false},err);
+    }catch{
+res.status(500).json({msg:"Internal server error",success:false});
     }
 }
 
