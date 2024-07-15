@@ -12,7 +12,8 @@ const GetProfileRoutes = require("./routes/getprofile.routes");
 const DonationScheduleRoutes = require("./routes/scheduledonation.routes");
 const  DonordonationhistoryRoutes = require("./routes/donationhistory.routes");
 const  PersonalInfoRoutes = require("./routes/updatepersonalinfo.routes");
-const GetTotalDonationdetailsRoutes = require("./routes/gettotaldonationdetails.routes")
+const GetTotalDonationdetailsRoutes = require("./routes/gettotaldonationdetails.routes");
+const BloodRequestRoutes = require("./routes/bloodrequest.routes")
 const Connectdb = require("./utils/dbconn");
 const server= express();
 const port = process.env.PORT || 7000;
@@ -27,6 +28,7 @@ server.use("/api",DonationScheduleRoutes);
 server.use("/api",DonordonationhistoryRoutes);
 server.use("/api",PersonalInfoRoutes);
 server.use("/api",GetTotalDonationdetailsRoutes);
+server.use("/api",BloodRequestRoutes)
 
 Connectdb().then(()=>{
     server.listen(port,()=>{
