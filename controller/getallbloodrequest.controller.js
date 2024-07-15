@@ -6,7 +6,7 @@ const GetAllBloodRequest = async (req,res)=>{
     try{
         const requestedbloodhistory = await RequestModel.find({email});
 
-        console.log('This is ALLHISTORY',requestedhistory)
+        console.log('This is ALLHISTORY',requestedbloodhistory)
 
         if(requestedbloodhistory){
 return res.status(200).send({msg:'Blood request history succeesful',data:requestedblood,success:true})

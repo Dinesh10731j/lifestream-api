@@ -16,7 +16,7 @@ res.status(404).send({msg:'Failed to blood request'})
 
 
     }catch(err){
-res.status(500).send({msg:"Internal server error",success:false},err);
+res.status(500).json({msg:"Internal server error",success:false},err);
     }
 }
 
