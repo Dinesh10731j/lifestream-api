@@ -3,7 +3,11 @@ const RequestModel = require("../model/requestblood.model");
 const RequestBlood = async (req,res)=>{
     try{
         const {fullName,urgency,quantity,message,email,bloodGroup} = req.body;
+
+        console.log(fullName,urgency,quantity,message,email,bloodGroup)
 const RequestUsersdetails = await RequestModel.create({fullName,urgency,quantity,message,email,bloodGroup});
+
+console.log('There  is error',RequestUsersdetails)
 
 
 if(RequestUsersdetails){
