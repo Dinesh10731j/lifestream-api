@@ -3,7 +3,7 @@ const GetAllBloodRequest = require("../controller/getallbloodrequest.controller"
 const BloodRequestHistoryRoute = express.Router();
 
 
-BloodRequestHistoryRoute.get("/getbloodrequesthistory",BloodRequestHistoryRoute);
+BloodRequestHistoryRoute.get("/getbloodrequesthistory/:userid",GetAllBloodRequest);
 
 
 
