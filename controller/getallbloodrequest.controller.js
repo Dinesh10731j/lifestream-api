@@ -9,7 +9,7 @@ const GetAllBloodRequest = async (req,res)=>{
         console.log('This is ALLHISTORY',requestedbloodhistory)
 
         if(requestedbloodhistory){
-return res.status(200).send({msg:'Blood request history succeesful',data:requestedblood,success:true})
+return res.status(200).send({msg:'Blood request history succeesful',data:requestedbloodhistory,success:true})
         }
 
         res.status(404).send({msg:'Blood request history not found', success:false})
