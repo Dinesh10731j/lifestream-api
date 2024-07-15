@@ -29,15 +29,20 @@ email:{
        
 
     },
-
     bloodGroup:{
      type:String,
      required:[true,'Blood group is required']
     },
 
 
+    requestdate:{
+        type:Date,
+        date:Date.now(),
+    }
+
+
     
-});
+},{timestamps:true});
 
 
 
