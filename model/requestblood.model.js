@@ -35,11 +35,7 @@ email:{
      required:[true,'Blood group is required']
     },
 
-    userInfo:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Usersignup',
-        required: true
-    }
+    
 });
 
 
