@@ -16,10 +16,13 @@ const ScheduleDonation = async (req, res) => {
             chronicDiseases,
             previousDonationDate,
             notes,
-            recentTravel
+            recentTravel,
+            bloodQuantity,
+            bloodGroup
+
         } = req.body;
 
-        console.log("Received data:", req.body); // Check what data is received
+
 
         const donorSchedule = await ScheduleModel.create({
             fullName,
@@ -35,7 +38,9 @@ const ScheduleDonation = async (req, res) => {
             chronicDiseases,
             previousDonationDate,
             notes,
-            recentTravel
+            recentTravel,
+            bloodQuantity,
+            bloodGroup
         });
 
         console.log("Created schedule:", donorSchedule); // Check the created schedule

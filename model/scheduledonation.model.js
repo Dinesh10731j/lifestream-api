@@ -63,6 +63,17 @@ const ScheduledonationSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  bloodQuantity:{
+    type:String,
+    required:true,
+
+
+  },
+  bloodGroup:{
+    type:String,
+    required:true,
+
+  },
 
   todayDate:{
     type:Date,
