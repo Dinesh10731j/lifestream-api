@@ -16,7 +16,7 @@ const UserSignup = async (req, res) => {
 
         const alreadyExists = await UserSignupModel.findOne({ email });
 
-        console.log("alreadyExists:", alreadyExists);
+     
 
         if (!alreadyExists) {
             // Hash the password before saving

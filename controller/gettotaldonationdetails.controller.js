@@ -17,12 +17,12 @@ const GetTotalDonationdetails = async (req, res) => {
             donation._doc.total = totaldonation; // _doc is used to directly modify the document's data
         });
 
-        console.log("Total completed donations:", totaldonation);
+        
 
         res.status(200).send({ data: totaldonordonation, success: true });
 
     } catch (err) {
-        console.error("Error:", err);
+       
         res.status(500).send({ msg: "Internal server error", success: false });
     }
 };

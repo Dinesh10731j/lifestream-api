@@ -1,12 +1,12 @@
 const RequestModel = require("../model/requestblood.model");
 const GetAllBloodRequest = async (req,res)=>{
     const {email} = req.params;
-    console.log('This is email from fronetnd',email);
+  
 
     try{
         const requestedbloodhistory = await RequestModel.find({email});
 
-        console.log('This is ALLHISTORY',requestedbloodhistory)
+ 
 
         if(requestedbloodhistory){
 return res.status(200).send({msg:'Blood request history succeesful',data:requestedbloodhistory,success:true})
