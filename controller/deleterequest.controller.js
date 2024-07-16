@@ -6,8 +6,6 @@ const DeleteRequest = async (req,res)=>{
 
         const deletedRequest = await RequestModel.findByIdAndDelete(deleteid);
     
-    
-    
         if(!deletedRequest){
     
             return res.status(400).json({msg:'Failed to delete request',status:false})

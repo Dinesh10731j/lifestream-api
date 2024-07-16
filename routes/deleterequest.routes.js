@@ -5,7 +5,7 @@ const DeleteRequestRoute = express.Router();
 
 
 
-DeleteRequestRoute.delete("/deleteid/:id");
+DeleteRequestRoute.delete("/deleteid/:deleteid");
 
 
 
