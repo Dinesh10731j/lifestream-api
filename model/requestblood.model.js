@@ -35,6 +35,11 @@ email:{
     },
 
 
+    status:{
+        type:String,
+        default:'Pending'
+    },
+
     requestdate:{
         type:Date,
         default:Date.now(),
