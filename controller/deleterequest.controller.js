@@ -10,7 +10,7 @@ const DeleteRequest = async (req,res)=>{
     
         if(!deletedRequest){
     
-            return res.status(400).send({msg:'Failed to delete request',status:false})
+            return res.status(400).json({msg:'Failed to delete request',status:false})
         }
     
         res.json({ message: 'Request deleted successfully' });
