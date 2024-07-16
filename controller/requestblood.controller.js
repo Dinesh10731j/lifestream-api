@@ -12,7 +12,7 @@ const RequestUsersdetails = await RequestModel.create({fullName,urgency,quantity
 
 if(RequestUsersdetails){
 
-    return res.status(201).send({msg:'Blood request send successfully!',data:RequestUsersdetails,success:true})
+    return res.status(201).send({msg:'Blood request send successfully!',success:true})
 }
 
 
