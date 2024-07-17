@@ -1,6 +1,6 @@
 const ScheduleModel = require("../model/scheduledonation.model");
 const Twillo= require("../services/twillo")
-const sendEmail = require("../services/sendEmail");
+const sendEmail = require("../services/nodemailer");
 
 const ScheduleDonation = async (req, res) => {
     try {
