@@ -1,6 +1,6 @@
 const ScheduleModel = require("../model/scheduledonation.model");
 const Twillo= require("../services/twillo")
-
+const sendEmail = require("../services/sendEmail");
 
 const ScheduleDonation = async (req, res) => {
     try {
@@ -24,7 +24,12 @@ const ScheduleDonation = async (req, res) => {
 
         } = req.body;
 
+
+        sendEmail(email, 'Blood Donation Scheduled', 'A donor has scheduled a blood donation. Please check your dashboard for details.');
+
         Twillo(phoneNumber);
+
+        
         const donorSchedule = await ScheduleModel.create({
             fullName,
             email,
@@ -44,7 +49,7 @@ const ScheduleDonation = async (req, res) => {
             bloodGroup
         });
 
-        console.log("Created schedule:", donorSchedule); // Check the created schedule
+       
 
         res.status(201).send({
             msg: "Schedule created Successfully",
