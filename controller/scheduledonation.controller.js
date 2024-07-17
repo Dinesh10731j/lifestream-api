@@ -25,7 +25,7 @@ const ScheduleDonation = async (req, res) => {
         } = req.body;
 
 
-        sendEmail(email, 'Blood Donation Scheduled', 'A donor has scheduled a blood donation. Please check your dashboard for details.');
+        sendEmail(email, 'Blood Donation Scheduled', `Dear user ${fullName} you has scheduled a blood donation on ${date}. Please check your dashboard for details.https://lifeestream.netlify.app`);
 
   
 
