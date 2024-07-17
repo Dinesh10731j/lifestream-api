@@ -11,8 +11,7 @@ client.messages
     .create({
         body: 'A donor has scheduled a blood donation. Please check your dashboard for details.',
         from: '+15856201636',
-
-              to: formattedNumber
+        to: formattedNumber
     })
     .then(message => console.log('Message send successfully',message.sid))
     .catch(error => {
