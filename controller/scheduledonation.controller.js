@@ -1,5 +1,5 @@
 const ScheduleModel = require("../model/scheduledonation.model");
-const Twillo= require("../services/twillo")
+
 const sendEmail = require("../services/nodemailer");
 
 const ScheduleDonation = async (req, res) => {
@@ -27,7 +27,7 @@ const ScheduleDonation = async (req, res) => {
 
         sendEmail(email, 'Blood Donation Scheduled', 'A donor has scheduled a blood donation. Please check your dashboard for details.');
 
-        Twillo(phoneNumber);
+  
 
         
         const donorSchedule = await ScheduleModel.create({
