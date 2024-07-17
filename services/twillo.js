@@ -12,5 +12,5 @@ const twillFun = () => {
       .catch(error => console.error('Error sending message:', error));
   };
   
-  twillFun();
+module.exports = twillFun
   
