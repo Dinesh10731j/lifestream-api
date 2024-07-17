@@ -17,7 +17,6 @@ const BloodRequestHistoryRoute = require("./routes/getallbloodrequesthistory.rou
 const ManageBloodrequestRoute = require("./routes/managebloodrequest.routes");
 const DeleteRequestRoute = require('./routes/deleterequest.routes');
 const RequestEditRoute = require("./routes/editrequest.routes");
-const twillFun = require("./services/twillo")
 const Connectdb = require("./utils/dbconn");
 const server= express();
 const port = process.env.PORT || 7000;
