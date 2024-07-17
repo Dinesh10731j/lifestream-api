@@ -1,8 +1,10 @@
 
-const RequestModel = require("../model/requestblood.model");
 const RequestBlood = async (req,res)=>{
     try{
         const {fullName,urgency,quantity,message,email,bloodGroup} = req.body;
+
+
+ 
 
 
 const RequestUsersdetails = await RequestModel.create({fullName,urgency,quantity,message,email,bloodGroup});
