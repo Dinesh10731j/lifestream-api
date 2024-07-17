@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const twilio = require('twilio');
-const client = twilio(process.env.ACCOUNT_SID, process.env.AUTH_TOKEN);
+const client = twilio(process.env.accountSid, process.env.authToken);
 
 const Twillo = (userMobileNumber) => {
   const formattedNumber = `+977${userMobileNumber.replace(/^0+/, '')}`;
