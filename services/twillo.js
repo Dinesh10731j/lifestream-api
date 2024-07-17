@@ -5,6 +5,7 @@ const client = twilio(process.env.accountSid, process.env.authToken);
 
 const Twillo = (userMobileNumber) => {
   const formattedNumber = `+977${userMobileNumber.replace(/^0+/, '')}`;
+  console.log(formattedNumber)
   
   client.messages
     .create({
