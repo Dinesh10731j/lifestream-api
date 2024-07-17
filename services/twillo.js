@@ -14,7 +14,7 @@ client.messages
 
               to: formattedNumber
     })
-    .then(message => console.log(message.sid))
+    .then(message => console.log('Message send successfully',message.sid))
     .catch(error => {
           console.error('Error sending message:', error);
       });
