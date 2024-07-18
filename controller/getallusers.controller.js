@@ -9,7 +9,7 @@ const GetAlluser = async()=>{
         }
 
 
-        return res.status(200).send({msg:'LifestreamUsers fetch successfully'});
+        return res.status(200).send({msg:'LifestreamUsers fetch successfully',data:LifestreamUser});
      
     }  catch(err){
 
