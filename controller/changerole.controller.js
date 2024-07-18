@@ -2,7 +2,7 @@ const UserSignupModel = require("../model/signup.model");
 const ChangeRole = async (req,res)=>{
     try{
         const {role} = req.body;
-    console.log(req.params);
+    console.log('This is params of changeroles',req.params);
 
 const updatedRole = await UserSignupModel.findOneAndUpdate({role:role},{new:true});
 
