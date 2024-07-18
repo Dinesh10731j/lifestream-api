@@ -17,6 +17,8 @@ const ManageBloodrequestRoute = require("./routes/managebloodrequest.routes");
 const DeleteRequestRoute = require("./routes/deleterequest.routes");
 const RequestEditRoute = require("./routes/editrequest.routes");
 const GetAlluserRoute = require("./routes/getallusers.routes");
+const  UserRoleChangeRoute=require("./routes/changerole.routes");
+
 
 const Connectdb = require("./utils/dbconn");
 const server = express();
@@ -38,7 +40,7 @@ server.use("/api", ManageBloodrequestRoute);
 server.use("/api", DeleteRequestRoute);
 server.use("/api", RequestEditRoute);
 server.use("/api", GetAlluserRoute);
-
+server.use("/api",UserRoleChangeRoute);
 Connectdb().then(() => {
   server.listen(port, () => {
     console.log(`Listening to port ${port}`);
