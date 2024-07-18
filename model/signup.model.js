@@ -7,7 +7,7 @@ const SignupSchema = new mongoose.Schema({
     name:{
 
         type:String,
-        required:[true,'E-mail is required']
+        required:[true,'Name  is required']
     },
     email:{
         
@@ -38,7 +38,7 @@ const SignupSchema = new mongoose.Schema({
 
 
 SignupSchema.methods.generateToken= async()=>{
-    const token = jwt.sign({id:this._id},process.env.Signature);
+    const token = jwt.sign({id:this._id,name:this.name,role:this.role,email:this.email,password:this.passwword},process.env.Signature);
     this.token = token;
     return token;
 }
