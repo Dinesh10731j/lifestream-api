@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const RequestSchema = new mongoose.Schema({
+    userId:{
+type:mongoose.Schema.Types.ObjectId,
+ref:'Usersignup'
+  },
     fullName:{
         type:String,
         required:[true,'fullname is required']
