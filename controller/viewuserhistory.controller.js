@@ -2,7 +2,7 @@ const RequestModel = require("../model/requestblood.model");
 const ViewUserHistory = async (req,res)=>{
 try{
 
-const {id} = req.body;
+const {id} = req.params;
 const SingleUserhistory = await RequestModel.findById({id});
 
 
