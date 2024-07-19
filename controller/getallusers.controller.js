@@ -4,7 +4,7 @@ const GetAlluser = async (req, res) => {
     const LifestreamUser = await UserSignupModel.find({});
 
     if (LifestreamUser.length === 0) {
-      return res.status(400).send({ msg: "User not founs !", success: false });
+      return res.status(400).send({ msg: "User not found !", success: false });
     }
 
     return res

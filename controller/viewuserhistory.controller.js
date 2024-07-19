@@ -3,7 +3,7 @@ const ViewUserHistory = async (req,res)=>{
 try{
 
 const {id} = req.params;
-const SingleUserhistory = await RequestModel.findById(id);
+const SingleUserhistory = await RequestModel.findById(id).populate('userId');
 
 
 if(!SingleUserhistory){
