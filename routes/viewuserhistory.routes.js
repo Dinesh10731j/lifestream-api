@@ -3,7 +3,7 @@ const express = require("express");
 const ViewUserHistoryRoute = express.Router();
 
 
-ViewUserHistoryRoute.get("/userhistory/:id",ViewUserHistory);
+ViewUserHistoryRoute.get("/userhistory/:email",ViewUserHistory);
 
 
 module.exports = ViewUserHistoryRoute;

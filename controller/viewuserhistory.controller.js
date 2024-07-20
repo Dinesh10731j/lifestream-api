@@ -2,11 +2,12 @@ const RequestModel = require("../model/requestblood.model");
 const ViewUserHistory = async (req,res)=>{
 try{
 
-const {id} = req.params;
-const SingleUserhistory = await RequestModel.find(id).populate('userId');
+const {email} = req.params;
+console.log('This is a email and the email is like this ',email)
+const Userhistory = await RequestModel.find(email);
 
 
-if(!SingleUserhistory){
+if(!Userhistory){
     return res.status(404).send({msg:'User history not found',success:false})
 }
 
