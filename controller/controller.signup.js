@@ -52,8 +52,7 @@ const UserSignup = async (req, res) => {
             });
         }
     } catch (error) {
-        // Handling internal server errors
-        console.error("Error in user signup:", error.message);
+     
         return res.status(500).json({
             success: false,
             message: "Internal Server Error"

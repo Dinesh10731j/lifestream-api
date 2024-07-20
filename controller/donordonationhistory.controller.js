@@ -14,7 +14,7 @@ const DonationHistory = async (req, res) => {
 
     return res.status(200).send({ data: donationhistory, status: true });
   } catch (err) {
-    console.error('Internal server error:', err); // Log the error
+
     res.status(500).send({ msg: "Internal server error", status: false });
   }
 };
