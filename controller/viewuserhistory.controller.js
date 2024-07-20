@@ -1,10 +1,12 @@
 const RequestModel = require("../model/requestblood.model");
+const decodeEmail = require("js-base64")
 
 const ViewUserHistory = async (req, res) => {
   try {
     const { email } = req.params;
+    const decodedEmail = decodeEmail.decode(email)
 
-    const Userhistory = await RequestModel.find({ email: email });
+    const Userhistory = await RequestModel.find({ email: decodedEmail });
 
     if (!Userhistory || Userhistory.length === 0) {
       return res.status(404).send({ msg: 'User history not found', success: false });
