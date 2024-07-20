@@ -2,7 +2,10 @@ const ScheduleModel = require("../model/scheduledonation.model");
 
 const sendEmail = require("../services/nodemailer");
 
+
+
 const ScheduleDonation = async (req, res) => {
+
   try {
     const {
       fullName,
@@ -23,15 +26,18 @@ const ScheduleDonation = async (req, res) => {
       bloodGroup,
     } = req.body;
 
+
+
+
     sendEmail(
-      email,
+      decodedEmail,
       "Blood Donation Scheduled",
-      `Dear user ${fullName} you has scheduled a blood donation on ${date}. Please check your dashboard for details.https://lifeestream.netlify.app`
+      `Dear,${fullName} you has scheduled a blood donation on ${date}. Please check your dashboard for details.https://lifeestream.netlify.app`
     );
 
     const donorSchedule = await ScheduleModel.create({
       fullName,
-      email,
+    email,
       phoneNumber,
       donationType,
       date,
