@@ -1,15 +1,18 @@
 const ScheduleModel = require('../model/scheduledonation.model');
-
+const base64 = require("js-base64")
 
 const DonationHistory = async (req, res) => {
   try {
     const {email} = req.params;
+    console.log("This is beforre the encryption",email)
+    const decodedemail = base64.decode(email);
 
+    console.log("This is after the decode",decodedemail)
 
     
  
 
-    const donationhistory = await ScheduleModel.find({email});
+    const donationhistory = await ScheduleModel.find({decodedemail});
 
 
     if (!donationhistory) {
