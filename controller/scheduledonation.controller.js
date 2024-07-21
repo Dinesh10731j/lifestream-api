@@ -4,6 +4,8 @@ const sendEmail = require("../services/nodemailer");
 
 
 
+
+
 const ScheduleDonation = async (req, res) => {
 
   try {
@@ -27,7 +29,7 @@ const ScheduleDonation = async (req, res) => {
     } = req.body;
 
 
-console.log(email);
+console.log('This is email',email);
 
     sendEmail(
       email,

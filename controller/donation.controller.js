@@ -2,22 +2,35 @@ const ScheduleModel = require("../models/schedule.model");
 
 const getDonationStats = async (req, res) => {
   try {
-    const donationStats = await ScheduleModel.aggregate([
-      {
-        $group: {
-          _id: '$donationType',
-          total: { $sum: 1 }
-        }
+    // Fetch all the donation records
+    const donations = await ScheduleModel.find({});
+
+    // Initialize an object to count occurrences of each donation type
+    const donationCount = {
+      Platelets: 0,
+      WholeBlood: 0,
+      Plasma: 0
+    };
+
+    // Count the occurrences of each donation type
+    donations.forEach(donation => {
+      if (donation.donationType in donationCount) {
+        donationCount[donation.donationType]++;
       }
-    ]);
-    
+    });
 
-    console.log("This is for debugging",donationStats)
+    const donationStats = Object.entries(donationCount).map(([type, count]) => ({
+      _id: type,
+      total: count
+    }));
 
-    res.status(200).json({data:donationStats,msg:'Donation stats fetch successfully',message:true});
+    console.log("This is for debugging", donationStats);
+
+    res.status(200).json({ data: donationStats, msg: 'Donation stats fetched successfully', success: true });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching donation stats:", error); 
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
-module.exports =  getDonationStats ;
+module.exports = getDonationStats;
