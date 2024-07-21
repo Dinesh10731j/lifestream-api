@@ -18,8 +18,9 @@ const DonationInfo = async (req, res) => {
     ]);
 
     res.status(200).json({
-      totalDonations,
-      totalDonors: totalDonors.length > 0 ? totalDonors[0].totalDonors : 0 
+      data:totalDonations,
+      totalDonors: totalDonors.length > 0 ? totalDonors[0].totalDonors : 0 ,
+      msg:'Donation info fetch successfully',success:true
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
