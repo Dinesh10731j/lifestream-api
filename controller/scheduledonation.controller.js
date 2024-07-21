@@ -27,7 +27,7 @@ const ScheduleDonation = async (req, res) => {
     } = req.body;
 
 
-
+console.log(email);
 
     sendEmail(
       email,
