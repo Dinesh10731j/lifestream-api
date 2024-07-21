@@ -19,7 +19,8 @@ const RequestEditRoute = require("./routes/editrequest.routes");
 const GetAlluserRoute = require("./routes/getallusers.routes");
 const  UserRoleChangeRoute=require("./routes/changerole.routes");
 const RemoveUserRoute = require("./routes/removeuser.routes");
-const ViewUserHistoryRoute = require("./routes/viewuserhistory.routes")
+const ViewUserHistoryRoute = require("./routes/viewuserhistory.routes");
+const DonationStatsRoutes =  require("./routes/donationstats.routes")
 
 
 const Connectdb = require("./utils/dbconn");
@@ -45,6 +46,7 @@ server.use("/api", GetAlluserRoute);
 server.use("/api", UserRoleChangeRoute);
 server.use("/api", RemoveUserRoute);
 server.use("/api",ViewUserHistoryRoute);
+server.use("/api",DonationStatsRoutes);
 Connectdb().then(() => {
   server.listen(port, () => {
     console.log(`Listening to port ${port}`);
