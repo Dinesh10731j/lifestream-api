@@ -1,4 +1,4 @@
-const ScheduleModel = require("../models/schedule.model");
+const ScheduleModel = require("../model/scheduledonation.model");
 
 const getDonationStats = async (req, res) => {
   try {
