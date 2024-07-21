@@ -48,6 +48,7 @@ server.use("/api", UserRoleChangeRoute);
 server.use("/api", RemoveUserRoute);
 server.use("/api",ViewUserHistoryRoute);
 server.use("/api",DonationStatsRoutes);
+server.use("/api",DonationInfoRouter)
 Connectdb().then(() => {
   server.listen(port, () => {
     console.log(`Listening to port ${port}`);

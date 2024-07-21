@@ -19,7 +19,7 @@ const DonationInfo = async (req, res) => {
 
     res.status(200).json({
       totalDonations,
-      totalDonors: totalDonors.length > 0 ? totalDonors[0].totalDonors : 0 // Handle case where there are no donors
+      totalDonors: totalDonors.length > 0 ? totalDonors[0].totalDonors : 0 
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
