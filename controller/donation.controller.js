@@ -12,7 +12,7 @@ const getDonationStats = async (req, res) => {
     ]);
     
 
-    console.log("This is for debugging",donationStats)
+
 
     res.status(200).json({data:donationStats,msg:'Donation stats fetch successfully',message:true});
   } catch (error) {
