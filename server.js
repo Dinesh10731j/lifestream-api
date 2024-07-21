@@ -20,7 +20,8 @@ const GetAlluserRoute = require("./routes/getallusers.routes");
 const  UserRoleChangeRoute=require("./routes/changerole.routes");
 const RemoveUserRoute = require("./routes/removeuser.routes");
 const ViewUserHistoryRoute = require("./routes/viewuserhistory.routes");
-const DonationStatsRoutes =  require("./routes/donationstats.routes")
+const DonationStatsRoutes =  require("./routes/donationstats.routes");
+const DonationInfoRouter = require("./routes/donationinfo.routes");
 
 
 const Connectdb = require("./utils/dbconn");
