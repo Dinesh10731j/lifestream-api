@@ -4,7 +4,7 @@ const Donordonationstats = async (req,res)=>{
   try {
     const { email } = req.params;
 
-    const donationStats = await ScheduleModel.aggregate([
+    const donationStats = await ScheduleDonation.aggregate([
       { $match: { email: email } },
       {
         $group: {
