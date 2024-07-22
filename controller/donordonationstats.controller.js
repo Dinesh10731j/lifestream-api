@@ -1,10 +1,12 @@
 
 const ScheduleDonation = require("../model/scheduledonation.model");
-const base64 = require("js-base64")
+const bs64 = require("js-base64")
 const Donordonationstats = async (req,res)=>{
   try {
     const { email } = req.params;
-    const  decodedEmail= base64.decode(email);
+    console.log('This is after the decode email',email)
+    const  decodedEmail= bs64.decode(email);
+    console.log("This is decodeemail",decodedEmail)
 
     const donationStats = await ScheduleDonation.aggregate([
       { $match: { email: decodedEmail } },
