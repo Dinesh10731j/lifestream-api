@@ -4,9 +4,9 @@ const base64 = require("js-base64")
 const Donordonationstats = async (req,res)=>{
   try {
     const {encodedEmail} = req.params;
-    console.log('This is before the decode email',encodedEmail)
+ 
     const  decodedEmail= base64.decode(encodedEmail);
-    console.log("This is after email is  decodeemail",decodedEmail)
+  
 
     const donationStats = await ScheduleDonation.aggregate([
       { $match: { email: decodedEmail } },
@@ -26,7 +26,7 @@ const Donordonationstats = async (req,res)=>{
 
     res.status(200).send(donationStats[0]);
   } catch (error) {
-    console.error(error);
+ 
     res.status(500).send({ msg: "Internal server error", success: false },error);
   }
 }
