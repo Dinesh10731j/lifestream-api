@@ -1,8 +1,8 @@
-const express = require("../controller/rejectrequest.controller");
+const express = require('express')
 const rejectRequest = require("../controller/rejectrequest.controller");
 
 const rejectRequestRoute = express.Router();
 
-rejectRequestRoute.patch('/reject/:rejectId',rejectRequest);
+rejectRequestRoute.put('/reject/:rejectId',rejectRequest);
 
 module.exports = rejectRequestRoute;
