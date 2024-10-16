@@ -3,7 +3,7 @@ const acceptRequest = require('../controller/acceptrequest.controller');
 const acceptRequestRoute = express.Router();
 
 
-acceptRequestRoute.put('/accept/:requestId',acceptRequest);
+acceptRequestRoute.put('/accept/:acceptId',acceptRequest);
 
 
 module.exports = acceptRequestRoute;

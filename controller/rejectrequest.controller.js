@@ -1,15 +1,17 @@
 const RequestModel = require("../model/requestblood.model");
-const acceptRequest = async (req, res) => {
+const rejectRequest = async (req, res) => {
   try {
-    const { acceptId } = req.params;
+    const { rejectId } = req.params;
 
-    if (!acceptId) {
-      return res.status(400).json({ msg: "acceptId is missing" });
+    if (!rejectId) {
+      return res
+        .status(400)
+        .json({ msg: "RejectId is missing", success: false });
     }
 
     const updatedRequest = await RequestModel.findByIdAndUpdate(
-      acceptId,
-      { status: "Accepted" },
+      rejectId,
+      { status: "Rejected" },
       { new: true }
     );
 
@@ -27,4 +29,5 @@ const acceptRequest = async (req, res) => {
   }
 };
 
-module.exports = acceptRequest;
+
+module.exports = rejectRequest;
