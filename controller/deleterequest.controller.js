@@ -3,7 +3,7 @@ const RequestModel = require("../model/requestblood.model");
 const DeleteRequest = async (req,res)=>{
 
     try{
-        const {requestId} = req.params;
+        const {requestId} = req.body;
 
         const deletedRequest = await RequestModel.findByIdAndDelete(requestId);
     
