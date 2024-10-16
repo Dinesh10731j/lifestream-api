@@ -1,17 +1,18 @@
+
 const RequestModel = require("../model/requestblood.model");
 const DeleteRequest = async (req,res)=>{
 
     try{
-        const {deleteid} = req.params;
+        const {requestId} = req.params;
 
-        const deletedRequest = await RequestModel.findByIdAndDelete(deleteid);
+        const deletedRequest = await RequestModel.findByIdAndDelete(requestId);
     
         if(!deletedRequest){
     
             return res.status(400).json({msg:'Failed to delete request',status:false})
         }
     
-        res.json({ message: 'Request deleted successfully' });
+        res.json({ message: 'Request deleted successfully', success:true});
     
 
     }catch(err){
