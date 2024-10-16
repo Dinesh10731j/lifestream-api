@@ -4,6 +4,7 @@ const RequestModel = require("../model/requestblood.model");
 const acceptRequest = async (req, res) => {
   try {
     const { acceptId } = req.params;
+    console.log('This is acceptId',acceptId)
 
     if (!acceptId) {
       return res.status(400).json({ msg: "acceptId is missing" });
