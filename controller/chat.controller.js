@@ -3,14 +3,14 @@ const fs = require("fs");
 const path = require("path");
 const trainingData = require("../utils/trainingData");
 
-const MODEL_PATH = path.resolve(__dirname, "../model/chatbotModel.json");
+const MODEL_PATH = path.resolve(__dirname, "../model/chatBotModel.json");
 
 
 let net;
 
 const trainModel = () => {
     console.log("Starting model training...");
-    net = new brain.recurrent.LSTM();
+    net = new brain.recurrent.LSTM({hiddenLayers:[10,10]});
 
     // Train the model
     net.train(trainingData, {
@@ -18,7 +18,9 @@ const trainModel = () => {
         log: true,
         logPeriod: 20,              
         learningRate: 0.12,         
-        errorThresh: 0.025          
+        errorThresh: 0.025,
+       
+                 
     });
 
     const trainedModel = net.toJSON();
@@ -59,7 +61,7 @@ loadModel();
 
 const chatBot = (req, res) => {
     try {
-        const question = req.body.question?.toLowerCase().trim();  // Normalize input
+        const question = req.body.question?.toLowerCase().trim();
 
         if (!question) {
             return res.status(400).json({
