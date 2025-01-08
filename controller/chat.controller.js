@@ -1,9 +1,9 @@
-const brain = require("brain.js");
+const brain = require('brain.js');
 const fs = require("fs");
 const path = require("path");
 const trainingData = require("../utils/trainingData");
 
-const MODEL_PATH = path.resolve(__dirname, "../model/chatBotModel.json");
+const MODEL_PATH = path.resolve(__dirname, "../model/trainedModel.json");
 
 
 let net;
