@@ -1,82 +1,60 @@
-const brain = require("brain.js");
+const brain = require('brain.js');
 const fs = require("fs");
 const path = require("path");
 const trainingData = require("../utils/trainingData");
 
-const MODEL_PATH = path.resolve(__dirname, "../model/chatBotModel.json");
-const BACKUP_PATH = `${MODEL_PATH}.bak`;
-let net;
+const MODEL_PATH = path.resolve(__dirname, "../model/trainedModel.json");
 
+
+let net;
 
 const trainModel = () => {
     console.log("Starting model training...");
-    net = new brain.recurrent.LSTM({ hiddenLayers: [15, 15] });  
+    net = new brain.recurrent.LSTM({hiddenLayers:[10,10]});
 
+    // Train the model
     net.train(trainingData, {
-        iterations: 5000, 
+        iterations:2000,         
         log: true,
-        logPeriod: 100,   
-        learningRate: 0.15,  
-        errorThresh: 0.015, 
-        callback: () => {
-            fs.writeFileSync(MODEL_PATH, JSON.stringify(net.toJSON()), "utf-8");
-            console.log("Checkpoint saved.");
-        },
-        callbackPeriod: 500  
+        logPeriod: 20,              
+        learningRate: 0.12,         
+        errorThresh: 0.025,
+       
+                 
     });
 
     const trainedModel = net.toJSON();
-    if (trainedModel && Object.keys(trainedModel).length > 0) {
-        fs.writeFileSync(MODEL_PATH, JSON.stringify(trainedModel), "utf-8");
-        console.log("Model trained and saved successfully.");
-    } else {
-        console.error("Training produced an invalid model. Not saving.");
-    }
+    fs.writeFileSync(MODEL_PATH, JSON.stringify(trainedModel), "utf-8");
+    console.log("Model trained and saved successfully.");
 };
-
 
 const loadModel = () => {
-    let retryCount = 0;
-    const maxRetries = 3;
-
-    while (retryCount < maxRetries) {
-        try {
-            if (fs.existsSync(MODEL_PATH)) {
-                const modelData = fs.readFileSync(MODEL_PATH, "utf-8");
-                net = new brain.recurrent.LSTM();
-                net.fromJSON(JSON.parse(modelData));
-                console.log("Model loaded successfully.");
-                return;
+    try {
+        if (fs.existsSync(MODEL_PATH)) {
+            const modelData = fs.readFileSync(MODEL_PATH, "utf-8");
+            
+            if (!modelData.trim()) {
+                throw new Error("Model file is empty. Retraining...");
             }
-        } catch (error) {
-            retryCount++;
-            console.error(`Model load failed. Attempt ${retryCount}/${maxRetries}`);
+            
+            net = new brain.recurrent.LSTM();
+            net.fromJSON(JSON.parse(modelData));
+            console.log("Model loaded from file.");
+        } else {
+            console.log("No pre-trained model found. Starting training...");
+            trainModel();
         }
-    }
-
-    if (fs.existsSync(MODEL_PATH)) {
-        fs.renameSync(MODEL_PATH, BACKUP_PATH);
-        console.log(`Corrupt model backed up as ${BACKUP_PATH}. Retraining...`);
-    }
-    trainModel();
-};
-
-const promptDeleteModel = () => {
-    const readline = require("readline").createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
-    readline.question("Model appears corrupt. Do you want to delete it and retrain? (y/n) ", (answer) => {
-        if (answer.toLowerCase() === "y") {
+    } catch (error) {
+        console.error("Failed to load model:", error.message);
+        
+      
+        if (fs.existsSync(MODEL_PATH)) {
             fs.unlinkSync(MODEL_PATH);
             console.log("Corrupt model deleted. Retraining...");
-            trainModel();
-        } else {
-            console.log("Model retained. Please inspect manually.");
         }
-        readline.close();
-    });
+        
+        trainModel();
+    }
 };
 
 loadModel();
