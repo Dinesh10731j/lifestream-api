@@ -25,7 +25,8 @@ const DonationInfoRouter = require("./routes/donationinfo.routes");
 const DonordonationStatsRoutes = require("./routes/donordonationstats.routes");
 const acceptRequestRoute = require('./routes/acceptrequest.routes');
 const rejectRequestRoute = require("./routes/rejectrequest.routes");
-const chatRouter = require("./routes/chat.routes")
+const chatRouter = require("./routes/chat.routes");
+const receiptantOverViewRoute = require("./routes/receiptantoverview.routes");
 const Connectdb = require("./utils/dbconn");
 const server = express();
 const port = process.env.PORT || 7000;
@@ -55,6 +56,7 @@ server.use("/api",DonordonationStatsRoutes);
 server.use("/api",acceptRequestRoute);
 server.use("/api",rejectRequestRoute);
 server.use("/api",chatRouter);
+server.use("/api",receiptantOverViewRoute);
 Connectdb().then(() => {
   server.listen(port, () => {
     console.log(`Listening to port ${port}`);
