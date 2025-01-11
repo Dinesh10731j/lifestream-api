@@ -32,9 +32,9 @@ const SignupSchema = new mongoose.Schema({
         ref:"Scheduledonation"
     },
 
-
-    token:String
-});
+    token:String,
+    
+},{timestamps:true});
 
 
 SignupSchema.methods.generateToken= async()=>{

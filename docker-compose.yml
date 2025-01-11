@@ -1,9 +1,8 @@
-version: "3.8"  
 
 services:
   backend:
     build:
-      context: .
+      context: .  
       dockerfile: Dockerfile
     volumes:
       - .:/app
@@ -21,6 +20,14 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
+
+  redis:
+    image: redis:latest  
+    container_name: redis
+    ports:
+      - "6379:6379"  
     networks:
       - app-network
 
