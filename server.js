@@ -27,6 +27,7 @@ const acceptRequestRoute = require('./routes/acceptrequest.routes');
 const rejectRequestRoute = require("./routes/rejectrequest.routes");
 const chatRouter = require("./routes/chat.routes");
 const receiptantOverViewRoute = require("./routes/receiptantoverview.routes");
+const removeAccountRoute = require("./routes/removeaccount.routes")
 const Connectdb = require("./utils/dbconn");
 const server = express();
 const port = process.env.PORT || 7000;
@@ -57,6 +58,7 @@ server.use("/api",acceptRequestRoute);
 server.use("/api",rejectRequestRoute);
 server.use("/api",chatRouter);
 server.use("/api",receiptantOverViewRoute);
+server.use("/api",removeAccountRoute)
 Connectdb().then(() => {
   server.listen(port, () => {
     console.log(`Listening to port ${port}`);
