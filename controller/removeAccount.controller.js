@@ -3,6 +3,7 @@ const UserSignupModel = require("../model/signup.model");
 const Remove_Account = async (req, res) => {
     try {
         const { userId } = req.params;
+ 
 
     
         if (!userId) {

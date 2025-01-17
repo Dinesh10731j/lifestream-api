@@ -5,7 +5,7 @@ const removeAccountRoute = express.Router();
 
 
 
-removeAccountRoute.delete("/remove_account",Remove_Account);
+removeAccountRoute.delete("/remove_account/:userId",Remove_Account);
 
 
 module.exports = removeAccountRoute;
